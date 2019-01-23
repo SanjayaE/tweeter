@@ -19,6 +19,7 @@ section span.counter {
   font-weight: 300;
   line-height: 2em;
   padding-right: 5px;
+  color: blue;
 }
 
 section.new-tweet h2 {
@@ -29,4 +30,25 @@ section.new-tweet h2 {
 
 section.new-tweet form {
   padding: 0 15px 15px 15px;
+}
+
+ #all-tweets {
+  margin: 0 2em;
+  background-color: #eee;
+  border: 1px solid #D0D0D0;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+#all-tweets form {
+  padding: 0 15px 15px 15px;
+}
+
+#all-tweets h2 {
+  /*border-bottom: 1px solid black;*/
+ /* margin: 0 1em;*/
+  background-color: #808080;
+  border: 1px solid #D0D0D0;
+  border-radius: 1px;
+  padding: 20px;
 }
