@@ -1,20 +1,67 @@
  #all-tweets {
   margin: 0 2em;
-  background-color: #eee;
-  border: 1px solid #D0D0D0;
-  border-radius: 5px;
-  padding: 10px;
+  background-color: #ffffff;
+  border: 1.25px solid #D0D0D0;
+  border-radius: 3px;
+  opacity: 0.6;
 }
 
-#all-tweets form {
-  padding: 0 15px 15px 15px;
+
+#all-tweets h2 {
+  border: 25px;
+  margin-top: 10px;
+  /*background-color: #808080;*/
+ /* border: 1px solid #D0D0D0;
+  border-radius: 1px;*/
+  padding: 20px;
+  float: left;
+}
+
+#all-tweets header {
+  /*background-color: #eee;*/
+  width: 100%;
+  overflow: auto;
+  /*opacity: 0.2;*/
+}
+
+#all-tweets header {
+  background-color: #eee;
+  width: 100%;
+  overflow: auto;
+}
+
+#all-tweets .profile {
+  height: 60px;
+  width: 60px;
+  float: left;
+  border-radius: 5px;
+  margin: 8px;
 }
 
 #all-tweets h2 {
- /* border-bottom: 1px solid black;
- /* margin: 0 1em;*/
-  background-color: #808080;
-  border: 1px solid #D0D0D0;
-  border-radius: 1px;
-  padding: 20px;
-}*/
+  border: 30px 0 0 0;
+  margin-top: 10px;
+  float: left;
+}
+
+#all-tweets span.handle {
+  float: right;
+  margin: 15px 7.5px;
+  color: #76bf37
+}
+
+#all-tweets div {
+  padding: 10px;
+  margin: 5px;
+}
+
+#all-tweets footer {
+  border-top: 1px solid #D0D0D0;
+  padding: 15px 5px;
+  overflow: auto;
+}
+
+#all-tweets .post-date {
+  float: left;
+}
+
