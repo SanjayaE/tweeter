@@ -68,6 +68,10 @@ $('#tweetAjax').on('submit', function(event) {
   //submit using ajax
     $.post( "/tweets", data, function(){
      // console.log(data);
+     // renderTweets(data);
+  let $name = $('<h2>').text("demo user");
+  let $body = $('<div>').append($('<p>').text(newTweet.val()));
+  $('#all-tweets').append($name, $body);
     } );
   }
 });
@@ -81,8 +85,6 @@ function loadTweets(tweetData){
       renderTweets(data);
 
     });
-
-
 
 }
 
