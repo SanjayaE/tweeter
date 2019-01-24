@@ -50,16 +50,26 @@ $('#tweetAjax').on('submit', function(event) {
 
   //If this method is called, the default action of the event will not be triggered.
   event.preventDefault();
-  // turns the form data into a query string.
+  //check if test input box is empty or has more than 140 chars
+  const newTweet = $("#tweettex");
+  console.log("tweet:", newTweet.val())
+  if (newTweet.val() === "" || newTweet.val() === null) {
+    alert("Not a valid input :" + newTweet.val() );
+
+  } else if (newTweet.val().length > 140) {
+    alert("Please enter less than 140 characters.");
+  }else{
+
+     // turns the form data into a query string.
   //Our server is configure to receive form data formatted as a query string.
-  let data = $(this).serialize();
+    let data = $(this).serialize();
 
   // This serialized data should be sent to the server in the body field of the AJAX POST request.
   //submit using ajax
-  $.post( "/tweets", data, function(){
-    console.log(data);
-  } );
-
+    $.post( "/tweets", data, function(){
+     // console.log(data);
+    } );
+  }
 });
 
 /* ******** AJAX to fetch (GET) data from the server****** */

@@ -2,7 +2,14 @@ $(document).ready(function() {
   // --- our code goes here ---
 // jQuery function to bind keypress for tweetInput
 $( "textarea").keyup(function() {
- var txtcount = $(this).val().length; // this will print # of input - cool
+ var txtcount = $(this).val().length;
+
+ if ($(this).val() === "" && $(this).val() === null){
+  console.log(error);
+ }
+
+
+ // this will print # of input - cool
 
   $(this).siblings("span.counter").text(txtcount)
   //mapping from the DOM
