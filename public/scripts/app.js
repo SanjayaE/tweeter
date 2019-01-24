@@ -7,6 +7,8 @@
 $(document).ready(function() {
 
 let $tweet;
+
+//test data
 var tweetData = [
   {
     "user": {
@@ -61,13 +63,11 @@ function renderTweets(tweets) {
     // calls createTweetElement for each tweet
     // takes return value and appends it to the tweets container
 
-    console.log(tweets)
+   // console.log(tweets)
    for(let data of tweets){
+    //this will call the function to create actual tweets
      $tweet = createTweetElement(data);
-
-      //console.log(data)
-
-
+     //this will append it to all-tweets ID dom structure.
       $('#all-tweets').append($tweet);
 
     }
@@ -76,15 +76,16 @@ function renderTweets(tweets) {
 function createTweetElement(tweetobj){
 
 let $tweet = $("<article>").addClass("tweet");
+let $header = $('<header>');
+let $avatars = $('<img>').addClass('profile').attr("src", tweetobj.user.avatars.small);
 let $name = $('<h2>').text(tweetobj.user.name);
-      $tweet.append($name);
-
+let $handle = $('<span>').addClass('handle').text(tweetobj.user.handle);
 let $body = $('<div>').append($('<p>').text(tweetobj.content.text));
-$name.append($body)
 let $footer = $('<footer>');
-$body.append($footer)
-let $created_at = $('<span>').addClass('datetime').text(tweetobj.created_at);
-$footer.append($created_at)
+let $createdAt = $('<span>').addClass('datetime').text(tweetobj.created_at);
+$($header).append($avatars, $name, $handle);
+$($footer).append($createdAt, $footer);
+$($tweet).append($header, $body, $footer);
 
 return $tweet;
 
