@@ -91,4 +91,14 @@ function loadTweets(tweetData){
 loadTweets();
 
 
+//when button press this will toggle the compose tweet section and select textarea
+
+$('.compose').on('click', () => {
+$('.new-tweet').slideToggle(250);
+$('#tweettex').focus().select();
+
+});
+
+
+
 });
