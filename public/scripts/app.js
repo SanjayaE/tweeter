@@ -88,23 +88,27 @@ $($footer).append($createdAt, $footer);
 $($tweet).append($header, $body, $footer);
 
 return $tweet;
-
 }
 
 renderTweets(tweetData);
 
-// let $tweet = createTweetElement(tweetData);
+/* *******AJAX POST Request Event handler********* */
 
+//Bind an event handler to the "submit" JavaScript event, or trigger that event on an element.
+$('#tweetAjax').on('submit', function(event) {
 
-  // Test / driver code (temporary)
-//console.log(renderTweets(data)); // to see what it looks like
+  //If this method is called, the default action of the event will not be triggered.
+  event.preventDefault();
+  // turns the form data into a query string.
+  //Our server is configure to receive form data formatted as a query string.
+  let data = $(this).serialize();
 
+  // This serialized data should be sent to the server in the body field of the AJAX POST request.
+  //submit using ajax
+  $.post( "/tweets", data, function(){
+    console.log(data);
+  } );
 
-
- // $('all-tweets').append($tweet);
-
-
-// to add it to the page so we can make sure it's got all the right elements, classes, etc.
-
+});
 
 });
