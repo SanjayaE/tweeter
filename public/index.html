@@ -43,13 +43,15 @@
           <form id="tweetAjax" action="/tweets" method="POST">
                 <textarea id= "tweettex" name="text" placeholder="What are you humming about?"></textarea>
                 <input type="submit" value="Tweet">
+                <div>
+                <span class="error"></span>
+                </div>
                 <span class="counter">140</span>
             </form>
         </section>
         <section id="all-tweets">
             <article class="tweet">
                <header>
-                  <!-- <img class="profile" src="/images/007.jpg"> -->
                 <h2>User 007</h2>
                 <span class="handle">@JBonds</span>
                  </header>

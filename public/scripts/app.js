@@ -54,11 +54,18 @@ $('#tweetAjax').on('submit', function(event) {
   const newTweet = $("#tweettex");
   console.log("tweet:", newTweet.val())
   if (newTweet.val() === "" || newTweet.val() === null) {
-    alert("Not a valid input :" + newTweet.val() );
+    // alert("Not a valid input :" + newTweet.val() );
+    console.log("error")
+
+    $( "div" ).slideDown( "slow" );
+    $(".error").text("Not a valid input :");
 
   } else if (newTweet.val().length > 140) {
-    alert("Please enter less than 140 characters.");
+    $( "div" ).slideDown( "slow" );
+    $(".error").text("Please enter less than 140 characters.");
+
   }else{
+     $( "div" ).hide();
 
      // turns the form data into a query string.
   //Our server is configure to receive form data formatted as a query string.
@@ -96,8 +103,8 @@ loadTweets();
 $('.compose').on('click', () => {
 $('.new-tweet').slideToggle(250);
 $('#tweettex').focus().select();
-
 });
+
 
 
 

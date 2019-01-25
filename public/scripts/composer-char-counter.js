@@ -11,7 +11,7 @@ $( "textarea").keyup(function() {
 
  // this will print # of input - cool
 
-  $(this).siblings("span.counter").text(txtcount)
+  $(this).siblings("span.counter").text(txtcount);
   //mapping from the DOM
   //console.log($(this).siblings("span.counter").text(txtcount))
    if( $(this).val().length > 140){
