@@ -18,8 +18,15 @@ $( "textarea").keyup(function() {
    //console.log(txtcount)
       $(this).siblings("span.counter").css ('color','red');
 
-   } else{
+   } else if($(this).val().length < 140 && $(this).val().length > 0 ) {
+      $(".error").text("");
+      $(this).siblings("span.counter").css ('color','blue');
+   }
+
+
+   else{
      $(this).siblings("span.counter").css ('color','blue');
+
    }
 
 // console.log(txtcount);

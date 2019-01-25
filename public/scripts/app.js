@@ -58,11 +58,11 @@ $('#tweetAjax').on('submit', function(event) {
     console.log("error")
 
     $( "div" ).slideDown( "slow" );
-    $(".error").text("Not a valid input :");
+    $(".error").text("Error ! Not a valid input.");
 
   } else if (newTweet.val().length > 140) {
     $( "div" ).slideDown( "slow" );
-    $(".error").text("Please enter less than 140 characters.");
+    $(".error").text("Error ! Please enter less than 140 characters.");
 
   }else{
      $( "div" ).hide();
