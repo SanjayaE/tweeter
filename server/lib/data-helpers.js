@@ -26,10 +26,9 @@ module.exports = function makeDataHelpers(db) {
         return callback(err);
       }
       const sortNewestFirst = (a, b) => a.created_at - b.created_at;
-      callback(null, tweets);
+      callback(null, tweets.sort(sortNewestFirst));
     });
   }
-
 
 
       // simulateDelay(() => {

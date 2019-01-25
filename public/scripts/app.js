@@ -5,7 +5,7 @@
  */
 
 $(document).ready(function() {
-
+$('.new-tweet').hide();
 let $tweet;
 
 
@@ -52,7 +52,7 @@ $('#tweetAjax').on('submit', function(event) {
   event.preventDefault();
   //check if test input box is empty or has more than 140 chars
   const newTweet = $("#tweettex");
-  console.log("tweet:", newTweet.val())
+  //console.log("tweet:", newTweet.val())
   if (newTweet.val() === "" || newTweet.val() === null) {
     $( "div" ).slideDown( "slow" );
     $(".error").text("Error ! Not a valid input.");
@@ -100,8 +100,5 @@ $('.compose').on('click', () => {
 $('.new-tweet').slideToggle(250);
 $('#tweettex').focus().select();
 });
-
-
-
 
 });
