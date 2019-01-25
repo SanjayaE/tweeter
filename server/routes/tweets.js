@@ -5,6 +5,9 @@ const userHelper    = require("../lib/util/user-helper")
 const express       = require('express');
 const tweetsRoutes  = express.Router();
 
+/*  Modules each have their own isolated scope, just like functions do.
+But unlike a function, you can't pass custom arguments to a module. If you want to accomplish the same thing, you can export a function instead.  */
+
 module.exports = function(DataHelpers) {
 
   tweetsRoutes.get("/", function(req, res) {
@@ -17,6 +20,8 @@ module.exports = function(DataHelpers) {
     });
   });
 
+/* dependency injection - the tweetsRoutes object depends upon the
+DataHelpers argument, and it's being passed in (injected) from outside. */
   tweetsRoutes.post("/", function(req, res) {
     if (!req.body.text) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});
