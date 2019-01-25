@@ -54,16 +54,11 @@ $('#tweetAjax').on('submit', function(event) {
   const newTweet = $("#tweettex");
   console.log("tweet:", newTweet.val())
   if (newTweet.val() === "" || newTweet.val() === null) {
-    // alert("Not a valid input :" + newTweet.val() );
-    console.log("error")
-
     $( "div" ).slideDown( "slow" );
     $(".error").text("Error ! Not a valid input.");
-
-  } else if (newTweet.val().length > 140) {
+  }else if (newTweet.val().length > 140) {
     $( "div" ).slideDown( "slow" );
     $(".error").text("Error ! Please enter less than 140 characters.");
-
   }else{
      $( "div" ).hide();
 
@@ -75,10 +70,11 @@ $('#tweetAjax').on('submit', function(event) {
   //submit using ajax
     $.post( "/tweets", data, function(){
      // console.log(data);
-     // renderTweets(data);
-  let $name = $('<h2>').text("demo user");
-  let $body = $('<div>').append($('<p>').text(newTweet.val()));
-  $('#all-tweets').append($name, $body);
+     renderTweets(data);
+  // let $name = $('<h2>').text("demo user");
+  // let $body = $('<div>').append($('<p>').text(newTweet.val()));
+  // $('#all-tweets').append($name, $body);
+
     } );
   }
 });
