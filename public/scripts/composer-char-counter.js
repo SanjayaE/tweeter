@@ -1,5 +1,6 @@
 $(document).ready(function() {
   // --- our code goes here ---
+
 // jQuery function to bind keypress for tweetInput
 $( "textarea").keyup(function() {
  var txtcount = $(this).val().length;
@@ -18,7 +19,7 @@ $( "textarea").keyup(function() {
    //console.log(txtcount)
       $(this).siblings("span.counter").css ('color','red');
 
-   } else if($(this).val().length < 140 && $(this).val().length > 0 ) {
+   } else if($(this).val().length <= 140 && $(this).val().length > 0 ) {
       $(".error").text("");
       $(this).siblings("span.counter").css ('color','blue');
    }

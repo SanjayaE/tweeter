@@ -8,6 +8,31 @@ $(document).ready(function() {
 $('.new-tweet').hide();
 let $tweet;
 
+function timeCal(time) {
+  var dateNow = Date.now();
+   // console.log(dateNow - time)
+  var seconds = (dateNow - time) / 1000 ;
+  var minutes = (dateNow - time) / 1000 / 60;
+  var hours = (dateNow - time) / 1000 / 60 / 60;
+  var days = (dateNow - time) / 1000 / 60 / 60 /24;
+  var months = (dateNow - time) / 1000 / 60 / 60 /24/30;
+  if (minutes < 1) {
+    return `${Math.floor(seconds)} Seconds ago`;
+  } else if (minutes > 1 && minutes < 60) {
+    return `${Math.floor(minutes)} Minutes ago`;
+  } else if (minutes > 60 && hours < 24) {
+    return `${Math.floor(hours)} Hours ago`;
+  } else if (hours > 24 && days < 30) {
+    return `${Math.floor(hours / 24)} Days ago`;
+  }else if (days > 30 && months < 12) {
+    return `${Math.floor(days / 30)} Months ago`;
+  }else if (months > 12) {
+    return `${Math.floor(months / 12)} Years ago`;
+  }
+}
+
+
+
 
 function renderTweets(tweets) {
 
@@ -34,7 +59,7 @@ let $name = $('<h2>').text(tweetobj.user.name);
 let $handle = $('<span>').addClass('handle').text(tweetobj.user.handle);
 let $body = $('<div>').append($('<p>').text(tweetobj.content.text));
 let $footer = $('<footer>');
-let $createdAt = $('<span>').addClass('datetime').text(tweetobj.created_at);
+let $createdAt = $('<span>').addClass('datetime').text(timeCal(tweetobj.created_at));
 $($header).append($avatars, $name, $handle);
 $($footer).append($createdAt, $footer);
 $($tweet).append($header, $body, $footer);
