@@ -60,8 +60,14 @@ let $handle = $('<span>').addClass('handle').text(tweetobj.user.handle);
 let $body = $('<div>').append($('<p>').text(tweetobj.content.text));
 let $footer = $('<footer>');
 let $createdAt = $('<span>').addClass('datetime').text(timeCal(tweetobj.created_at));
+
+let $socialLike = $('<img>').addClass('social').attr("src","images/icons8-love-26.png");
+let $socialshare = $('<img>').addClass('social').attr("src","images/icons8-twitter-26.png");
+let $socialflag = $('<img>').addClass('social').attr("src","images/icons8-flag-filled-26.png");
+let $social = $('<span>').append($socialLike,$socialshare,$socialflag);
+
 $($header).append($avatars, $name, $handle);
-$($footer).append($createdAt, $footer);
+$($footer).append($createdAt, $social, $footer);
 $($tweet).append($header, $body, $footer);
 
 return $tweet;
