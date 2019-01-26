@@ -10,7 +10,6 @@ let $tweet;
 
 
 function renderTweets(tweets) {
-  $('#tweets').empty();
 
     // loops through tweets
     // calls createTweetElement for each tweet
@@ -72,17 +71,13 @@ $('#tweetAjax').on('submit', function(event) {
   //submit using ajax
     $.post( "/tweets", data, function(){
      // console.log(data);
-     renderTweets(data);
-     $("#tweettex").empty();
-     $("#tweettex").val('');
+     //renderTweets(data);
+     $("#tweettex").val("");
      loadTweets();
-
-  // let $name = $('<h2>').text("demo user");
-  // let $body = $('<div>').append($('<p>').text(newTweet.val()));
-  // $('#all-tweets').append($name, $body);
 
     } );
   }
+
 });
 
 /* ******** AJAX to fetch (GET) data from the server****** */
@@ -90,7 +85,7 @@ $('#tweetAjax').on('submit', function(event) {
 function loadTweets(tweetData){
   $.ajax("/tweets", { method: 'GET' })
     .then(function (data) {
-      console.log('Success: ', data);
+      //console.log('Success: ', data);
       renderTweets(data);
 
     });
