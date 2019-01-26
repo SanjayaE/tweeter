@@ -10,16 +10,18 @@ let $tweet;
 
 
 function renderTweets(tweets) {
-  // loops through tweets
+  $('#tweets').empty();
+
+    // loops through tweets
     // calls createTweetElement for each tweet
     // takes return value and appends it to the tweets container
 
-   // console.log(tweets)
+
    for(let data of tweets){
     //this will call the function to create actual tweets
      $tweet = createTweetElement(data);
      //this will append it to all-tweets ID dom structure.
-      $('#all-tweets').append($tweet);
+      $('#all-tweets').prepend($tweet);
 
     }
 }
@@ -71,6 +73,10 @@ $('#tweetAjax').on('submit', function(event) {
     $.post( "/tweets", data, function(){
      // console.log(data);
      renderTweets(data);
+     $("#tweettex").empty();
+     $("#tweettex").val('');
+     loadTweets();
+
   // let $name = $('<h2>').text("demo user");
   // let $body = $('<div>').append($('<p>').text(newTweet.val()));
   // $('#all-tweets').append($name, $body);
