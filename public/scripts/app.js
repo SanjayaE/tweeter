@@ -34,6 +34,7 @@ function timeCal(time) {
 
 
 function renderTweets(tweets) {
+   $("#all-tweets").empty();
 
     // loops through tweets
     // calls createTweetElement for each tweet
@@ -103,7 +104,6 @@ $('#tweetAjax').on('submit', function(event) {
      loadTweets();
     } );
   }
-  location.reload();
 
 });
 
@@ -113,9 +113,7 @@ function loadTweets(){
   $.ajax("/tweets", { method: 'GET' })
     .then(function (data) {
       renderTweets(data);
-
     });
-
 }
 
 loadTweets();
