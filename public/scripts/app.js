@@ -8,6 +8,7 @@ $(document).ready(function() {
 $('.new-tweet').hide();
 let $tweet;
 
+/* *******Function to calculate time since post********* */
 function timeCal(time) {
   var dateNow = Date.now();
   var seconds = (dateNow - time) / 1000;
@@ -30,9 +31,6 @@ function timeCal(time) {
   }
 }
 
-
-
-
 function renderTweets(tweets) {
    $("#all-tweets").empty();
 
@@ -49,6 +47,8 @@ function renderTweets(tweets) {
 
     }
 }
+
+/* *******DOM with jQuery********* */
 
 function createTweetElement(tweetobj){
 
@@ -73,7 +73,6 @@ $($tweet).append($header,$body,$footer);
 return $tweet;
 }
 
-// renderTweets(tweetData);
 
 /* *******AJAX POST Request Event handler********* */
 
@@ -117,7 +116,6 @@ function loadTweets(){
 }
 
 loadTweets();
-
 
 //when button press this will toggle the compose tweet section and select textarea
 
