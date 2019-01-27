@@ -103,6 +103,7 @@ $('#tweetAjax').on('submit', function(event) {
      loadTweets();
     } );
   }
+  location.reload();
 
 });
 
