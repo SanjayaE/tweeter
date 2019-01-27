@@ -32,7 +32,7 @@ const MONGODB_URI = "mongodb://localhost:27017/tweeter2";
   app.use("/tweets", tweetsRoutes);
 
   app.listen(PORT, () => {
-    console.log("Example app listening on port " + PORT);
+    console.log("tweeter app listening on port " + PORT);
   });
 
 });

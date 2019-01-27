@@ -3,30 +3,29 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
+"use strict";
 $(document).ready(function() {
 $('.new-tweet').hide();
 let $tweet;
 
 function timeCal(time) {
   var dateNow = Date.now();
-   // console.log(dateNow - time)
-  var seconds = (dateNow - time) / 1000 ;
+  var seconds = (dateNow - time) / 1000;
   var minutes = (dateNow - time) / 1000 / 60;
   var hours = (dateNow - time) / 1000 / 60 / 60;
-  var days = (dateNow - time) / 1000 / 60 / 60 /24;
-  var months = (dateNow - time) / 1000 / 60 / 60 /24/30;
+  var days = (dateNow - time) / 1000 / 60 / 60 / 24;
+  var months = (dateNow - time) / 1000 / 60 / 60 / 24/ 30;
   if (minutes < 1) {
     return `${Math.floor(seconds)} Seconds ago`;
-  } else if (minutes > 1 && minutes < 60) {
+  }else if (minutes > 1 && minutes < 60) {
     return `${Math.floor(minutes)} Minutes ago`;
-  } else if (minutes > 60 && hours < 24) {
+  }else if (minutes > 60 && hours < 24) {
     return `${Math.floor(hours)} Hours ago`;
-  } else if (hours > 24 && days < 30) {
+  }else if (hours > 24 && days < 30) {
     return `${Math.floor(hours / 24)} Days ago`;
   }else if (days > 30 && months < 12) {
     return `${Math.floor(days / 30)} Months ago`;
-  }else if (months > 12) {
+  }else{
     return `${Math.floor(months / 12)} Years ago`;
   }
 }
@@ -41,7 +40,7 @@ function renderTweets(tweets) {
     // takes return value and appends it to the tweets container
 
 
-   for(let data of tweets){
+   for(const data of tweets){
     //this will call the function to create actual tweets
      $tweet = createTweetElement(data);
      //this will append it to all-tweets ID dom structure.
@@ -52,23 +51,23 @@ function renderTweets(tweets) {
 
 function createTweetElement(tweetobj){
 
-let $tweet = $("<article>").addClass("tweet");
-let $header = $('<header>');
-let $avatars = $('<img>').addClass('profile').attr("src", tweetobj.user.avatars.small);
-let $name = $('<h2>').text(tweetobj.user.name);
-let $handle = $('<span>').addClass('handle').text(tweetobj.user.handle);
-let $body = $('<div>').append($('<p>').text(tweetobj.content.text));
-let $footer = $('<footer>');
-let $createdAt = $('<span>').addClass('datetime').text(timeCal(tweetobj.created_at));
+$tweet = $("<article>").addClass("tweet");
+const $header = $('<header>');
+const $avatars = $('<img>').addClass('profile').attr("src",tweetobj.user.avatars.small);
+const $name = $('<h2>').text(tweetobj.user.name);
+const $handle = $('<span>').addClass('handle').text(tweetobj.user.handle);
+const $body = $('<div>').append($('<p>').text(tweetobj.content.text));
+const $footer = $('<footer>');
+const $createdAt = $('<span>').addClass('datetime').text(timeCal(tweetobj.created_at));
 
-let $socialLike = $('<img>').addClass('social').attr("src","images/icons8-love-26.png");
-let $socialshare = $('<img>').addClass('social').attr("src","images/icons8-twitter-26.png");
-let $socialflag = $('<img>').addClass('social').attr("src","images/icons8-flag-filled-26.png");
-let $social = $('<span>').append($socialLike,$socialshare,$socialflag);
+const $socialLike = $('<img>').addClass('social').attr("src","images/icons8-love-26.png");
+const $socialshare = $('<img>').addClass('social').attr("src","images/icons8-twitter-26.png");
+const $socialflag = $('<img>').addClass('social').attr("src","images/icons8-flag-filled-26.png");
+const $social = $('<span>').append($socialLike,$socialshare,$socialflag);
 
-$($header).append($avatars, $name, $handle);
-$($footer).append($createdAt, $social, $footer);
-$($tweet).append($header, $body, $footer);
+$($header).append($avatars,$name,$handle);
+$($footer).append($createdAt,$social,$footer);
+$($tweet).append($header,$body,$footer);
 
 return $tweet;
 }
@@ -84,7 +83,6 @@ $('#tweetAjax').on('submit', function(event) {
   event.preventDefault();
   //check if test input box is empty or has more than 140 chars
   const newTweet = $("#tweettex");
-  //console.log("tweet:", newTweet.val())
   if (newTweet.val() === "" || newTweet.val() === null) {
     $( "div" ).slideDown( "slow" );
     $(".error").text("Error ! Not a valid input.");
@@ -100,12 +98,9 @@ $('#tweetAjax').on('submit', function(event) {
 
   // This serialized data should be sent to the server in the body field of the AJAX POST request.
   //submit using ajax
-    $.post( "/tweets", data, function(){
-     // console.log(data);
-     //renderTweets(data);
+    $.post( "/tweets",data,function(){
      $("#tweettex").val("");
      loadTweets();
-
     } );
   }
 
@@ -113,10 +108,9 @@ $('#tweetAjax').on('submit', function(event) {
 
 /* ******** AJAX to fetch (GET) data from the server****** */
 
-function loadTweets(tweetData){
+function loadTweets(){
   $.ajax("/tweets", { method: 'GET' })
     .then(function (data) {
-      //console.log('Success: ', data);
       renderTweets(data);
 
     });
@@ -129,8 +123,8 @@ loadTweets();
 //when button press this will toggle the compose tweet section and select textarea
 
 $('.compose').on('click', () => {
-$('.new-tweet').slideToggle(250);
-$('#tweettex').focus().select();
+  $('.new-tweet').slideToggle(250);
+  $('#tweettex').focus().select();
 });
 
 });
